@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123557">
+  <meta name="description" content="BenchBright Learning: independent MLS/MLT microbiology adaptive practice exam with explanations and an estimated ability profile.">
+  <title>MLS/MLT(ASCP) Microbiology CAT Practice | BenchBright Learning</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="questions.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap masthead">
+      <div class="brand" aria-label="BenchBright Learning">
+        <div class="brand-mark" aria-hidden="true">B<span>+</span></div>
+        <div><div class="brand-name">BENCHBRIGHT <span>LEARNING</span></div><div class="brand-tagline">COMPLEX SCIENCE. MADE VISUAL.</div></div>
+      </div>
+      <div class="header-label">MLS/MLT(ASCP) · Microbiology CAT</div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="hero">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> MLS/MLT CERTIFICATION REVIEW · INDEPENDENT RESOURCE</div>
+      <h1>Microbiology<br><span>Adaptive Practice Exam</span></h1>
+      <p class="hero-copy">An adaptive 20-question practice session drawn from a 200-question microbiology bank. Each response updates an ability estimate, and the next question adjusts to your performance. Finish with a topic breakdown and explanations for every answer choice.</p>
+    </div>
+
+    <section id="intro-screen" class="screen" aria-labelledby="intro-heading">
+      <div class="panel intro-grid">
+        <div>
+          <p class="kicker">PRACTICE EXAM · VERSION 1.0</p>
+          <h2 id="intro-heading">Ready to test your knowledge?</h2>
+          <p>Every attempt is exactly 20 questions. The exam starts near medium difficulty and recalculates your estimated ability from all submitted answers. It avoids presenting multiple variants of the same concept in one attempt.</p>
+          <div class="feature-grid">
+            <div class="feature"><div class="feature-value">20</div><div class="feature-label">Questions per session</div></div>
+            <div class="feature"><div class="feature-value">200</div><div class="feature-label">Question-bank entries</div></div>
+            <div class="feature"><div class="feature-value">8</div><div class="feature-label">Microbiology topic areas</div></div>
+          </div>
+          <button id="start-button" type="button" class="button button-primary">Begin adaptive exam <span aria-hidden="true">→</span></button>
+          <p class="subtle-note">No login required in this demo. Answers stay in your browser during the attempt. Do not refresh until the exam is finished. The question bank is visible in public site files.</p>
+        </div>
+        <div class="overview-card">
+          <h3>How it works</h3>
+          <ol class="steps">
+            <li><span>01</span><div><strong>Answer one at a time</strong><small>Previous answers cannot be changed.</small></div></li>
+            <li><span>02</span><div><strong>Difficulty recalculates</strong><small>A performance-based model uses your full response history.</small></div></li>
+            <li><span>03</span><div><strong>Balanced topic coverage</strong><small>Questions cover eight microbiology subject areas.</small></div></li>
+            <li><span>04</span><div><strong>Get a study report</strong><small>See correct answers, rationales, and an uncertainty estimate.</small></div></li>
+          </ol>
+          <div class="disclaimer-mini"><strong>Educational prototype:</strong> Item difficulties are expert-assigned starting estimates, not statistically calibrated. This is not an official ASCP exam or passing-score predictor.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="exam-screen" class="screen hidden" aria-labelledby="question-heading">
+      <div class="exam-head">
+        <div class="exam-head-row"><span id="question-count" class="kicker">QUESTION 1</span><div class="timer" aria-label="Elapsed exam time">◷ <span id="timer-value">00:00</span></div></div>
+        <div class="progress-track" role="progressbar" aria-label="Progress toward maximum number of questions" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0" id="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+        <div class="exam-subline"><span id="domain-label">Topic</span><span>One response at a time · adaptive</span></div>
+      </div>
+      <div class="panel question-panel">
+        <div class="question-top"><span id="difficulty-tag" class="difficulty-tag">Adaptive item</span><span id="question-id" class="question-id">MICRO-001</span></div>
+        <h2 id="question-heading" class="question-title"></h2>
+        <form id="answer-form">
+          <fieldset id="choices" class="choices"><legend class="visually-hidden">Choose one answer</legend></fieldset>
+          <div class="question-actions"><p class="inline-hint" id="answer-hint">Select the best answer.</p><button class="button button-primary" type="submit" id="submit-button" disabled>Submit answer <span aria-hidden="true">→</span></button></div>
+        </form>
+      </div>
+      <p class="screen-footnote">One question at a time. Explanations and correct answers are revealed only after all 20 questions are complete.</p>
+    </section>
+
+    <section id="result-screen" class="screen hidden" aria-labelledby="result-heading">
+      <div class="results-lead"><p class="kicker">YOUR PRACTICE REPORT</p><h2 id="result-heading">Adaptive exam complete</h2><p>Use these results to choose your next study priorities. This estimated ability score is not an ASCP scaled score.</p></div>
+      <div class="results-grid">
+        <div class="stat"><div class="stat-label">Questions answered</div><div class="stat-number" id="result-total">—</div></div>
+        <div class="stat"><div class="stat-label">Correct responses</div><div class="stat-number" id="result-accuracy">—</div></div>
+        <div class="stat"><div class="stat-label">Estimated ability (θ)</div><div class="stat-number" id="result-theta">—</div></div>
+        <div class="stat"><div class="stat-label">Uncertainty (posterior SD)</div><div class="stat-number" id="result-sem">—</div></div>
+      </div>
+      <div class="panel results-panel">
+        <h3>Ability estimate</h3>
+        <p id="result-interpretation"></p>
+        <div class="ability-scale"><div class="ability-ticks"><span>−4</span><span>−2</span><span>0</span><span>+2</span><span>+4</span></div><div class="ability-track"><div id="ability-interval" class="ability-interval"></div><div id="ability-marker" class="ability-marker"></div></div></div>
+        <p id="interval-text" class="fine-print"></p>
+        <h3 class="topic-header">Performance by topic</h3><div id="topic-results" class="topic-results"></div>
+        <div class="result-actions"><button id="download-button" type="button" class="button button-primary">Download my results</button><button id="print-button" type="button" class="button button-secondary">Print report</button><button id="restart-button" type="button" class="button button-secondary">New practice exam</button></div>
+      </div>
+      <div class="review-title"><div><p class="kicker">LEARN FROM EVERY ANSWER</p><h3>Answer review & rationales</h3></div><span class="review-caption">Same questions, in the order you received them</span></div>
+      <div id="review-list" class="review-list"></div>
+      <p class="screen-footnote"><strong>Important:</strong> The 200 entries include rewritten/related variants of some underlying concepts. The exam will not repeat those concept families within one 20-question session. Difficulty levels are provisional and not calibrated, and this independent practice tool is not an official ASCP test or a predictor of certification results.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-content"><div>© <span id="year"></span> BenchBright Learning · MLS/MLT Microbiology practice</div><div>Independent resource · Not affiliated with or endorsed by ASCP</div></div></footer>
+</body>
+</html>
